@@ -1,0 +1,430 @@
+@charset "utf-8";
+
+/* --- 基本設定 --- */
+html {
+    scroll-behavior: smooth; /* これでページ内リンクが滑らかになります */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background-color: #fdfaf5; /* 柔らかなベージュ */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* 下部の隙間排除 */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* --- ヘッダー --- */
+header {
+    background-color: #fff;
+    padding: 20px 0;
+    border-bottom: 3px solid #4a6741;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top h1 {
+    font-size: 1.5rem;
+    color: #4a6741;
+    letter-spacing: 2px;
+}
+
+.top p {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+nav ul li a:hover {
+    color: #6b4a8e;
+}
+
+/* --- ドロップダウンメニュー (購入ページ) --- */
+
+/* 親要素（購入ページli）の設定 */
+nav ul li.dropdown {
+    position: relative;
+}
+
+/* 隠れているメニューの箱 */
+.dropdown-menu {
+    display: none; /* 通常は非表示 */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+/* 購入ページにマウスを乗せたら表示 */
+nav ul li.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* メニュー内の各リンク */
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    color: #444;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+/* メニュー内のリンクにホバーした時 */
+.dropdown-menu li a:hover {
+    background-color: #fdfaf5;
+    color: #6b4a8e;
+}
+
+/* 下向き矢印のスタイル（HTMLで<span>▼</span>などを入れた場合） */
+.arrow {
+    font-size: 0.6rem;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+/* --- レスポンシブ用調整 (スマホ) --- */
+@media (max-width: 768px) {
+    /* --- スマホでは最初は隠しておく --- */
+    .dropdown-menu {
+        display: none; /* ← block から none に修正 */
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background: rgba(74, 103, 65, 0.05); 
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    /* --- JSで .is-open クラスがついた時だけ表示する設定を追加 --- */
+    .dropdown.is-open .dropdown-menu {
+        display: block !important;
+    }
+    
+    .dropdown-menu li a {
+        border-bottom: none;
+        padding: 5px 0;
+    }
+}
+
+/* --- メインビジュアル (Hero) --- */
+#hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('https://images.unsplash.com/photo-1596249301764-899450370425?auto=format&fit=crop&q=80&w=1500') no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- セクション共通 --- */
+section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    color: #4a6741;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #6b4a8e;
+}
+
+/* --- こだわり (About) --- */
+.about-flex {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.about-flex .text h3 {
+    margin-bottom: 20px;
+    color: #6b4a8e;
+}
+
+/* --- 品種紹介 (Products) --- 修正箇所 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.product-item {
+    background: #fff;
+    /* paddingの上下を調整（画像が上端にくっつくように） */
+    padding: 0 0 30px 0; 
+    border-radius: 8px;
+    overflow: hidden; /* 画像の角丸をはみ出させない */
+    border-top: 5px solid #6b4a8e;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 追加した画像用スタイル */
+.product-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* 比率を保って切り抜き */
+    margin-bottom: 20px;
+}
+
+.product-item h3 {
+    margin-bottom: 10px;
+    padding: 0 20px; /* 文字が端にくっつかないよう余白追加 */
+    font-size: 1.3rem;
+    color: #6b4a8e;
+}
+
+.product-item p {
+    padding: 0 20px; /* 文字が端にくっつかないよう余白追加 */
+    font-size: 0.95rem;
+}
+
+/* --- 農園情報 (Access) --- */
+.info-box {
+    background: #4a6741;
+    color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.info-box p {
+    margin-bottom: 10px;
+}
+
+/* --- フッター --- */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+}
+
+/* --- レスポンシブ (スマホ対応) --- */
+@@media (max-width: 768px) {
+    .header-container {
+        flex-direction: row;          /* 縦並びから横並びに戻す */
+        justify-content: space-between; /* ロゴとボタンを左右両端に配置 */
+        align-items: center;          /* 上下中央揃え */
+        gap: 0;                       /* 不要な隙間を消す */
+    }
+}
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .about-flex {
+        flex-direction: column;
+    }
+
+    /* --- ここを修正：スマホで2列表示 --- */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 1列から2列に変更 */
+        gap: 15px; /* 隙間が広いと窮屈なので少し狭めています */
+    }
+
+    .product-item {
+        padding-bottom: 20px; /* スマホ用に余白を少し調整 */
+    }
+
+    .product-img {
+        height: 150px; /* スマホ画面に合わせて画像の高さを少し抑えるときれいです */
+    }
+
+    .product-item h3 {
+        font-size: 1.1rem; /* スマホで文字が溢れないよう少し小さめに */
+        padding: 0 10px;
+    }
+
+    .product-item p {
+        font-size: 0.85rem; /* 説明文も少しコンパクトに */
+        padding: 0 10px;
+    }
+}
+
+/* --- Googleマップの調整 --- */
+.map-container {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 8px; /* 地図の角を少し丸くする */
+    overflow: hidden;    /* 角丸を適用させるため */
+    line-height: 0;      /* 下部の微小な隙間を消す */
+}
+
+.map-container iframe {
+    border: none;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .map-container iframe {
+        height: 250px; /* スマホでは地図の高さを少し低くしてスクロールしやすくする */
+    }
+}
+
+/* --- JavaScript連動：ハンバーガーボタン --- */
+.menu-btn {
+    display: none; /* PCでは非表示 */
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1000;
+    margin-left: auto; /* ★これを追加：親要素の中で右側に押し出す */
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #4a6741;
+    position: absolute;
+    transition: 0.3s;
+}
+
+.menu-btn span:nth-child(1) { top: 0; }
+.menu-btn span:nth-child(2) { top: 11px; }
+.menu-btn span:nth-child(3) { bottom: 0; }
+
+/* ボタンがアクティブな時（×印に変形） */
+.menu-btn.is-active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+.menu-btn.is-active span:nth-child(2) { opacity: 0; }
+.menu-btn.is-active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+
+/* --- スマホメニューのレイアウト --- */
+@media (max-width: 768px) {
+    .menu-btn { display: block; }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* 右側に隠す */
+        width: 70%;
+        height: 100vh;
+        background-color: #fff;
+        padding-top: 80px;
+        transition: 0.5s;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    nav.is-active {
+        right: 0; /* 画面内に出現 */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    /* スマホではドロップダウンを最初は隠す */
+    .dropdown-menu {
+        display: none; 
+        position: static;
+        transform: none;
+        box-shadow: none;
+        width: 100%;
+        background-color: #f9f9f9;
+    }
+
+    /* JSで open クラスがついたら展開 */
+    .dropdown.is-open .dropdown-menu {
+        display: block;
+    }
+}
