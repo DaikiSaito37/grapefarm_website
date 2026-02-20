@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戸丸農園 | こだわりの平棚式ブドウ園</title>
+    <link rel="stylesheet" href="sanitize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="home"> <div class="header-container">
+        <div class="top">
+            <h1>戸丸農園</h1>
+            <p>太陽の恵みを、一粒に。</p>
+        </div>
+
+        <div class="menu-btn" id="js-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="js-nav">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">こだわり</a></li>
+                <li><a href="#products">品種紹介</a></li>
+                <li><a href="#access">アクセス</a></li>
+                <li class="dropdown" id="js-dropdown">
+                    <a href="javascript:void(0)">購入ページ <span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://thebase.in/your-shop" target="_blank">BASE店</a></li>
+                        <li><a href="https://www.rakuten.co.jp/your-shop" target="_blank">楽天市場店</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h2>平棚式で育てる、極上のブドウ</h2>
+                <p>一つひとつ、丁寧に。手間暇かけた甘さをお届けします。</p>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <h2>戸丸農園のこだわり</h2>
+            <div class="about-flex">
+                <div class="text">
+                    <h3>「平棚式」が生み出す均一な甘み</h3>
+                    <p>当園では、昔ながらの「平棚式」を採用しています。ブドウの房が同じ高さに並ぶことで、すべての粒にムラなく太陽の光が当たり、糖度が高く、形の良いブドウが育ちます。</p>
+                </div>
+                </div>
+        </section>
+
+        <section id="products" class="container">
+            <h2>取り扱い品種</h2>
+            <div class="product-grid">
+                <article class="product-item">
+                    <img src="images/himrod.jpg" alt="ヒムロット" class="product-img">
+                    <h3>ヒムロット</h3>
+                    <p>甘くて爽やかな薄緑色の極早生ブドウです。</p>
+                </article>
+
+                <article class="product-item">
+                    <img src="images/shine-muscat.jpg" alt="シャインマスカット" class="product-img">
+                    <h3>シャインマスカット</h3>
+                    <p>皮ごと食べられる、パリッとした食感と芳醇な香り。</p>
+                </article>
+
+                <article class="product-item">
+                    <img src="images/fujiminori.jpg" alt="藤稔" class="product-img">
+                    <h3>藤稔</h3>
+                    <p>「ブドウの王様」。濃厚な甘みと果汁がたっぷりです。</p>
+                </article>
+
+                <article class="product-item">
+                    <img src="images/beni-izu.jpg" alt="紅伊豆" class="product-img">
+                    <h3>紅伊豆</h3>
+                    <p>粒のルビー色（鮮紅色）の皮が特徴の早熟な種ありブドウです。</p>
+                </article>
+
+                <article class="product-item">
+                    <img src="images/queen-nina.jpg" alt="クインニーナ" class="product-img">
+                    <h3>クインニーナ</h3>
+                    <p>鮮やかな赤色と高糖度（20度以上）が特徴の大粒ブドウです。</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="access" class="container">
+            <h2>農園情報</h2>
+            <div class="info-box">
+                <p>住所：群馬県利根郡川場村生品1237</p>
+                <p>開園時期：8月中旬〜10月上旬（予定）</p>
+                <p>電話：000-0000-0000</p>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3203.4354228392153!2d139.0867310764188!3d36.674916972282274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDQwJzI5LjciTiAxMznCsDA1JzIxLjUiRQ!5e0!3m2!1sja!2sjp!4v1715830000000!5m2!1sja!2sjp" 
+                        width="100%" 
+                        height="350" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tomaru Farm All Rights Reserved.</p>
+    </footer>
+    <script>
+    // 要素の取得
+    const menuBtn = document.getElementById('js-menu-btn');
+    const nav = document.getElementById('js-nav');
+    const dropdown = document.getElementById('js-dropdown');
+
+    // 1. ハンバーガーメニュー自体の開閉（三本線ボタン）
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('is-active');
+        nav.classList.toggle('is-active');
+    });
+
+    // 2. スマホ用ドロップダウンのクリック制御
+    dropdown.addEventListener('click', (e) => {
+        // 画面幅がスマホサイズ（768px以下）の時だけ動作
+        if (window.innerWidth <= 768) {
+            
+            // 「購入ページ」そのもの、または矢印をタップした時だけ開閉させる
+            // 下の階層のリンク（BASE店など）をタップした時は開閉させない
+            if (e.target.closest('.dropdown-menu') === null) {
+                e.preventDefault(); // リンク先へ飛ぶのを防ぐ
+                dropdown.classList.toggle('is-open'); // クラスを付け外しする
+            }
+        }
+    });
+
+    // 3. メニュー内のリンクをクリックしたら、メニュー全体を閉じる
+    const navLinks = document.querySelectorAll('#js-nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // ドロップダウンの親リンク（購入ページ）以外の普通のリンクが押されたら
+            if (!link.parentElement.classList.contains('dropdown')) {
+                menuBtn.classList.remove('is-active');
+                nav.classList.remove('is-active');
+                dropdown.classList.remove('is-open'); // ドロップダウンも閉じておく
+            }
+        });
+    });
+    </script>
+</body>
+</html>
